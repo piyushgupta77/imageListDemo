@@ -43,7 +43,14 @@ class ImageDetailActivity : AppCompatActivity() {
         }
 
         btn_save.setOnClickListener {
-            viewBinding.viewmodel?.handleUserSaveClick(selectedImage!!, isStoragePermissionGranted())
+            var isPermission = false
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                isPermission = isStoragePermissionGranted()
+            }
+            viewBinding.viewmodel?.handleUserSaveClick(
+                selectedImage!!,
+                isPermission
+            )
         }
 
         viewBinding.viewmodel?.isDownloading?.observe(this, Observer {

@@ -33,7 +33,9 @@ class ImageListAdapter(val itemClickListener: OnItemClickListener) : RecyclerVie
     }
 
     fun clear() {
+        val size = items.size
         items.clear()
+        notifyItemRangeRemoved(0, size)
     }
 
     interface OnItemClickListener {
