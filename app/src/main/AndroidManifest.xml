@@ -17,7 +17,8 @@
         <activity
             android:name=".view.images.detail.ImageDetailActivity"
             android:exported="false" />
-        <activity android:name=".view.images.list.ImageSearchActivity">
+        <activity android:name=".view.images.list.ImageSearchActivity"
+            android:exported= "true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
