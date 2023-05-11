@@ -2,6 +2,7 @@ package com.kotlin.mykotlinproj.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kotlin.mykotlinproj.Constants
 import com.kotlin.mykotlinproj.data.model.images.SearchResponse
 import com.kotlin.mykotlinproj.data.model.images.UnsplashPhoto
@@ -28,7 +29,7 @@ class ImageListViewModel @Inject constructor(private val searchRepository: Searc
 
     fun searchPhotos(searchQuery: String) {
         isDataLoading.value = true
-        GlobalScope.launch(exceptionHandler) {
+        viewModelScope.launch(exceptionHandler) {
             val searchResponse: SearchResponse? =
                 searchRepository.searchPhotos(searchQuery, pageNumber, Constants.PAGE_SIZE)
             isDataLoading.postValue(false)

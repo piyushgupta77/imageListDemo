@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,7 @@ import com.kotlin.mykotlinproj.databinding.ActivityImageDetailBinding
 import com.kotlin.mykotlinproj.viewmodel.ImageDetailViewModel
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_image_detail.*
+//import kotlinx.android.synthetic.main.activity_image_detail.*
 
 @AndroidEntryPoint
 class ImageDetailActivity : AppCompatActivity() {
@@ -42,7 +43,7 @@ class ImageDetailActivity : AppCompatActivity() {
             finish()
         }
 
-        btn_save.setOnClickListener {
+        findViewById<Button>(R.id.btn_save).setOnClickListener {
             var isPermission = false
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 isPermission = isStoragePermissionGranted()
