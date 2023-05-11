@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.util.Log
 import com.kotlin.mykotlinproj.Constants
 import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
 import java.io.IOException
 
@@ -19,6 +20,9 @@ class CustomOkHttpBuilder {
         const val HEADER_PRAGMA = "Pragma"
 
         fun getOkHttpClient(context: Context): OkHttpClient {
+            val logging = HttpLoggingInterceptor()
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
             val cache = Cache(
                 File(context.cacheDir, "http-cache"),
                 Constants.CACHE_SIZE_API_RESPONSE.toLong()
@@ -54,6 +58,7 @@ class CustomOkHttpBuilder {
                             .build()
                     }
                 })
+                .addInterceptor(logging)
                 .cache(cache)
             return builder.build()
         }
