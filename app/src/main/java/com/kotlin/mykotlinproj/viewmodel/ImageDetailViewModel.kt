@@ -1,13 +1,15 @@
 package com.kotlin.mykotlinproj.viewmodel
 
 import android.os.Build
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kotlin.mykotlinproj.data.model.images.UnsplashPhoto
 import com.kotlin.mykotlinproj.data.repo.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ImageDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ImageDetailViewModel @Inject constructor(
     private val searchRepository: SearchRepository
 ) : ViewModel() {
 

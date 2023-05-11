@@ -9,14 +9,14 @@ import com.kotlin.mykotlinproj.data.repo.cache.Cache
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class RepoModule {
     @Provides
     fun provideRepository(cache: Cache, networkClient: NetworkClient, @ApplicationContext context: Context): SearchRepository {

@@ -1,17 +1,19 @@
 package com.kotlin.mykotlinproj.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kotlin.mykotlinproj.Constants
 import com.kotlin.mykotlinproj.data.model.images.SearchResponse
 import com.kotlin.mykotlinproj.data.model.images.UnsplashPhoto
 import com.kotlin.mykotlinproj.data.repo.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ImageListViewModel @ViewModelInject constructor(private val searchRepository: SearchRepository) :
+@HiltViewModel
+class ImageListViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
 
     private val TAG: String? = ImageListViewModel::class.java.canonicalName
